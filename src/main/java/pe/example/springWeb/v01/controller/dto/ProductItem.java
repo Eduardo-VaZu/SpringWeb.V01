@@ -4,31 +4,26 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.PositiveOrZero;
-import lombok.*;
-import lombok.experimental.FieldDefaults;
+import lombok.Data;
 
 @Data
-//@Getter @Setter @EqualsAndHashCode @ToString @RequiredArgsConstructor
-//@Value
-//@Getter @EqualsAndHashCode @ToString
-@FieldDefaults(level = AccessLevel.PRIVATE)
 public class ProductItem {
 
-    Integer id;
+    private Integer id;
 
     @NotBlank
-    String name;
+    private String name;
 
     @NotBlank
-    String description;
+    private String description;
 
     @NotNull
     @Positive
-    Double price;
+    private Double price;
 
     @NotNull
     @PositiveOrZero
-    Integer storage;
+    private Integer storage;
 
 
 }

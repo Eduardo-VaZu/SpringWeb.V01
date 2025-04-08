@@ -1,6 +1,6 @@
 package pe.example.springWeb.v01.exception;
 
-public class ProductNotFoundException extends ProductException {
+public class ProductNotFoundException extends GlobalException {
     
     private static final long serialVersionUID = 1L;
 

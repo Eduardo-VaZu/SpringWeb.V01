@@ -2,148 +2,127 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <!-- Versión del modelo POM utilizado -->
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- Define el padre del proyecto, que proporciona configuraciones predeterminadas de Spring
-    Boot -->
+    <!-- Spring Boot Parent -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.4.4</version>
-        <relativePath /> <!-- Busca el parent en el repositorio -->
+        <relativePath />
     </parent>
 
-    <!-- Información básica del proyecto -->
+    <!-- Project Information -->
     <groupId>pe.example</groupId>
     <artifactId>springWeb.v01</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>springWeb.v01</name>
     <description>Demo project for Spring Boot</description>
 
-    <!-- Metadatos adicionales del proyecto (pueden completarse según necesidad) -->
-    <url />
-    <licenses>
-        <license />
-    </licenses>
-    <developers>
-        <developer />
-    </developers>
-    <scm>
-        <connection />
-        <developerConnection />
-        <tag />
-        <url />
-    </scm>
-
-    <!-- Propiedades del proyecto -->
+    <!-- Properties -->
     <properties>
         <java.version>21</java.version>
+        <jjwt.version>0.12.0</jjwt.version>
+        <springdoc.version>2.8.5</springdoc.version>
+        <spring-dotenv.version>3.0.0</spring-dotenv.version>
+        <mysql.version>9.2.0</mysql.version>
+        <annotations.version>26.0.2</annotations.version>
     </properties>
 
     <dependencies>
-        <!-- === DEPENDENCIAS CORE DE SPRING === -->
-        <!-- Proporciona características principales de Spring MVC, 
-        servidor Tomcat embebido y soporte para APIs RESTful -->
+        <!-- Spring Boot Core Dependencies -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        
-        <!-- Proporciona capacidades de validación usando Jakarta Bean 
-        Validation con Hibernate Validator -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
-        
-        <!-- Proporciona soporte JPA con Hibernate como implementación 
-        predeterminada para operaciones de base de datos -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
 
-        <!-- === SEGURIDAD === -->
-        <!-- Agrega características de autenticación, autorización y 
-        otras funciones de seguridad a la aplicación -->
+        <!-- Security -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
 
-        <!-- === BASE DE DATOS === -->
-        <!-- Driver JDBC de MySQL para conectar con bases de datos MySQL -->
+        <!-- JWT Dependencies -->
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-api</artifactId>
+            <version>${jjwt.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-impl</artifactId>
+            <version>${jjwt.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-jackson</artifactId>
+            <version>${jjwt.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+
+        <!-- Database -->
         <dependency>
             <groupId>com.mysql</groupId>
             <artifactId>mysql-connector-j</artifactId>
-            <version>9.2.0</version>
+            <version>${mysql.version}</version>
         </dependency>
-        
-        <!-- Herramienta de migración de base de datos que ayuda a 
-        controlar versiones del esquema de base de datos -->
         <dependency>
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-core</artifactId>
         </dependency>
-        
-        <!-- Extensiones específicas de MySQL para Flyway -->
         <dependency>
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-mysql</artifactId>
         </dependency>
 
-        <!-- === HERRAMIENTAS DE DESARROLLO === -->
-        <!-- Proporciona reinicio automático y recarga en vivo 
-        durante el desarrollo -->
+        <!-- Development Tools -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
-        
-        <!-- Reduce código repetitivo generando getters, setters, 
-        constructores, etc. en tiempo de compilación -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <scope>provided</scope>
         </dependency>
-        
-        <!-- Genera documentación OpenAPI para tus APIs REST con 
-        interfaz Swagger UI -->
+
+        <!-- Documentation -->
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-            <version>2.8.5</version>
+            <version>${springdoc.version}</version>
         </dependency>
-        
-        <!-- Permite cargar variables de entorno desde archivos .env -->
+
+        <!-- Utilities -->
         <dependency>
             <groupId>me.paulschwarz</groupId>
             <artifactId>spring-dotenv</artifactId>
-            <version>3.0.0</version>
+            <version>${spring-dotenv.version}</version>
         </dependency>
-        
-        <!-- Proporciona anotaciones para mejorar el análisis 
-        estático del código -->
         <dependency>
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>
-            <version>26.0.2</version>
+            <version>${annotations.version}</version>
             <scope>compile</scope>
         </dependency>
 
-        <!-- === PRUEBAS === -->
-        <!-- Framework para pruebas unitarias e integración en Spring Boot -->
+        <!-- Testing -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        
-        <!-- Proporciona utilidades para pruebas de seguridad en Spring -->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-test</artifactId>
@@ -153,10 +132,17 @@
 
     <build>
         <plugins>
-            <!-- Plugin de Spring Boot: Permite empaquetar la aplicación como un JAR ejecutable -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
             </plugin>
         </plugins>
     </build>

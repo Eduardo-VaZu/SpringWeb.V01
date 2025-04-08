@@ -1,6 +1,6 @@
 package pe.example.springWeb.v01.exception;
 
-public class InvalidProductIdException extends ProductException {
+public class InvalidProductIdException extends GlobalException {
     
     private static final long serialVersionUID = 1L;
 
