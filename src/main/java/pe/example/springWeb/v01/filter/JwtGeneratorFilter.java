@@ -1,8 +1,10 @@
 package pe.example.springWeb.v01.filter;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 import javax.crypto.SecretKey;
 
@@ -18,6 +20,7 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import pe.example.springWeb.v01.util.Constants;
 
 public class JwtGeneratorFilter extends OncePerRequestFilter {
 
