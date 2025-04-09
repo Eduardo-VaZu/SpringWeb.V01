@@ -1,9 +1,7 @@
 package pe.example.springWeb.v01.filter;
 
 import java.io.IOException;
-import java.net.Authenticator;
 import java.nio.charset.StandardCharsets;
-import java.security.SignatureException;
 import java.util.Objects;
 
 import javax.crypto.SecretKey;

@@ -35,7 +35,7 @@ public class JwtGeneratorFilter extends OncePerRequestFilter {
                     SecretKey secretKey = Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
                     String jwt = Jwts.builder().issuer("StoreApp").subject("JWT Token")
                     .claim("username", authentication.getName())
-                    .claim("athorities", authentication.getAuthorities().stream()
+                    .claim("authorities", authentication.getAuthorities().stream()
                     .map(GrantedAuthority::getAuthority).collect(Collectors.joining(",")))
                     .issuedAt(new Date())
                     .expiration(new Date((new Date()).getTime() + 1000 * 60 * 10))
